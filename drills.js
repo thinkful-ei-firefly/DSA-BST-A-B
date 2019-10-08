@@ -110,4 +110,15 @@ function findThirdNode(tree) {
   } else return tree.key;
 }
 
-console.log(findThirdNode(main()));
+// console.log(findThirdNode(main()));
+
+function isBalanced(tree) {
+  if (!tree) return false;
+  if (!tree.right && !tree.left) return true;
+  if (Math.abs(findBSTHeight(tree.right) - findBSTHeight(tree.left)) > 1 ) return false
+  return true
+}
+
+console.log(isBalanced(main()));
+
+
