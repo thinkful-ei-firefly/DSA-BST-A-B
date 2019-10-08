@@ -67,6 +67,10 @@ function findBSTHeight(tree) {
 
 // console.log(findBSTHeight(main()));
 
+
+// 6. Is it a BST?
+
+
 function isItBSTree(tree) {
    if (!tree) return false ;
 
