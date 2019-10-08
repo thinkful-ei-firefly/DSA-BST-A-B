@@ -65,4 +65,33 @@ function findBSTHeight(tree) {
   return height;
 }
 
-console.log(findBSTHeight(main()));
+// console.log(findBSTHeight(main()));
+
+function isItBSTree(tree) {
+   if (!tree) return false ;
+
+   if (tree.right) {
+       if (tree.right.key > tree.key) {
+       isItBSTree(tree.right)
+       } else {
+           return false
+       }
+   }
+
+   if (tree.left) {
+    if (tree.left.key < tree.key) {
+    isItBSTree(tree.left)
+    } else {
+        return false
+    }
+}
+
+return true
+
+}
+
+// console.log(isItBSTree(main()));
+
+
+
+
