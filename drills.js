@@ -2,10 +2,12 @@ const BinarySearchTree = require('./BinarySearchTree');
 
 function main() {
   const BST = new BinarySearchTree();
-  const strings = ['E', 'A', 'S', 'Y', 'Q', 'U', 'E', 'S', 'T', 'I', 'O', 'N'];
-  strings.forEach(element => BST.insert(element));
-  //   const inserts = [3, 1, 4, 6, 9, 2, 5, 7];
-  //   inserts.forEach(element => BST.insert(element));
+  // const strings = ['E', 'A', 'S', 'Y', 'Q', 'U', 'E', 'S', 'T', 'I', 'O', 'N'];
+  // strings.forEach(element => BST.insert(element));
+  const inserts = [3, 1, 4, 6, 9, 2, 5, 7];
+  inserts.forEach(element => BST.insert(element));
+  // const inserts = [10, 7, 6];
+  // inserts.forEach(element => BST.insert(element));
   return BST;
 }
 // console.log(main());
@@ -67,35 +69,45 @@ function findBSTHeight(tree) {
 
 // console.log(findBSTHeight(main()));
 
-
 // 6. Is it a BST?
 
-
 function isItBSTree(tree) {
-   if (!tree) return false ;
+  if (!tree) return false;
 
-   if (tree.right) {
-       if (tree.right.key > tree.key) {
-       isItBSTree(tree.right)
-       } else {
-           return false
-       }
-   }
-
-   if (tree.left) {
-    if (tree.left.key < tree.key) {
-    isItBSTree(tree.left)
+  if (tree.right) {
+    if (tree.right.key > tree.key) {
+      isItBSTree(tree.right);
     } else {
-        return false
+      return false;
     }
-}
+  }
 
-return true
+  if (tree.left) {
+    if (tree.left.key < tree.key) {
+      isItBSTree(tree.left);
+    } else {
+      return false;
+    }
+  }
 
+  return true;
 }
 
 // console.log(isItBSTree(main()));
 
+// 7. 3rd largest node
 
+function findThirdNode(tree) {
+  const height = findBSTHeight(tree);
+  if (height < 2) {
+    return null;
+  } else if (height < 3) {
+    if (tree.left && tree.right) {
+      return tree.left.value;
+    } else return null;
+  } else if (height > 3) {
+    return findThirdNode(tree.right);
+  } else return tree.key;
+}
 
-
+console.log(findThirdNode(main()));
